@@ -6,12 +6,13 @@ import Blogs from "../components/Blog/Blogs";
 import Fqa from "../components/Fqa/Fqa";
 import Login from "../components/Login/Login";
 import SignUp from "../components/Sign-Up/SignUp";
+import Home from "../components/Home/Home";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Root />,
+  {   
+    element: <Root />,    
     children: [
+      { path: "/", element: <Home />, loader:async()=>fetch('https://skill-data.vercel.app/home')},
       { path: "/courses", element: <Courses /> },
       { path: "/blog", element: <Blogs /> },
       { path: "/following-question-answer", element: <Fqa /> },

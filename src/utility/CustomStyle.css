@@ -1,0 +1,11 @@
+.bg-design {
+  background-image: linear-gradient(to right, #231f72, #1e5395);
+  height: 100vh;
+}
+.home-image {
+  height: 450px;
+  width: 100%;
+}
+.text-justify{
+  text-align: justify;
+}
