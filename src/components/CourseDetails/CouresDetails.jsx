@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { v4 } from "uuid";
 import { FiDownload } from "react-icons/fi";
 import Pdf from "react-to-pdf";
@@ -8,7 +8,7 @@ import Pdf from "react-to-pdf";
 const ref = React.createRef();
 const CouresDetails = () => {
   const details = useLoaderData();
-  const { name, img, ratings, video, access, certificate, learn } = details;
+  const {id, name, img, ratings, video, access, certificate, learn } = details;
   return (
     <Container className="mb-5">
       <Row>
@@ -49,7 +49,7 @@ const CouresDetails = () => {
                     </ul>
                   </Card.Body>
                   <div className="d-flex justify-content-center pt-2 pb-4">
-                    <Button variant="outline-primary">Get premium access</Button>
+                    <Link to={`/checkout/${id}`}><Button variant="outline-primary">Get premium access</Button></Link>
                   </div>
                 </Col>
               </Row>

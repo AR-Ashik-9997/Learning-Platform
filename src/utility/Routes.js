@@ -8,6 +8,7 @@ import Login from "../components/Login/Login";
 import SignUp from "../components/Sign-Up/SignUp";
 import Home from "../components/Home/Home";
 import CouresDetails from '../components/CourseDetails/CouresDetails';
+import CheackOut from "../components/CheckOut/CheackOut";
 const router = createBrowserRouter([
   {   
     element: <Root />,    
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       { path: "/following-question-answer", element: <Fqa /> },
       { path: "/sign-in", element: <Login /> },
       { path: "/create-account", element: <SignUp /> },
+      { path: "/checkout/:courseID", element: <CheackOut />,loader:async({params})=>fetch(`https://skill-data.vercel.app/course/${params.courseID}`)},
     ],
   },
 ]);

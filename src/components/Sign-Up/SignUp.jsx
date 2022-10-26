@@ -99,8 +99,7 @@ const SignUp = () => {
                   placeholder="Full Name"
                   className="rounded-pill"
                   autoComplete="off"
-                />
-                <Form.Text className="text-error">{errors.name}</Form.Text>
+                />                
               </Form.Group>
               <Form.Group className="mb-4" controlId="formBasicEmail">
                 <Form.Control

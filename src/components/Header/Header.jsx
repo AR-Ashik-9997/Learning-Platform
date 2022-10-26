@@ -1,9 +1,16 @@
 import React, { useContext } from "react";
 import { Button, Container, Dropdown, Nav, Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import { AuthContext } from "../../utility/AuthProvider";
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user,Logout } = useContext(AuthContext);
+  const navigate=useNavigate();
+  const handleSignOut=()=>{    
+    Logout()
+    .then(()=>{})
+    navigate('/sign-in')
+    .catch(error=>console.error(error))
+  }
   return (
     <div>
       <Navbar expand="lg">
@@ -34,23 +41,32 @@ const Header = () => {
               <Nav.Link className="fs-5 text-white" as={Link} to="/blog">
                 Blog
               </Nav.Link>
-              {user && user.photoURL ? (
+              {user && user?.photoURL?
                 <Dropdown>
                   <Nav.Link
                     as={Link}
                     data-toggle="tooltip"
                     data-placement="top"
-                    title={user.displayName}
-                    class="nav-link dropdown-toggle user-action"
+                    title={user?.displayName}
+                    className="nav-link"
                   >
                     <img
-                      src="https://img.freepik.com/premium-vector/man-avatar-profile-round-icon_24640-14044.jpg?w=2000"
+                      src={user?.photoURL}
                       variant="top"
                       className="user-profile "
                       alt="Avatar"
                     />
                   </Nav.Link>
                 </Dropdown>
+                :
+                <></>
+               }
+              {user?.uid ? (
+                <div className="d-flex align-items-center">                  
+                    <Button onClick={handleSignOut} variant="outline-primary btn-md text-white">
+                      Sign-Out
+                    </Button>                 
+                </div>
               ) : (
                 <div className="d-flex align-items-center">
                   <Link to="/sign-in">
