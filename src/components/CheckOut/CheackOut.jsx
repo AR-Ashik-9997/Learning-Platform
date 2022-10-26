@@ -1,10 +1,11 @@
 import React from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useLoaderData } from "react-router-dom";
-
+import { ToastContainer, toast } from "react-toastify";
 const CheackOut = () => {
   const checkoutData = useLoaderData();
   const { name, img, ratings, video, access, certificate } = checkoutData;
+  const notify = () => toast.success(`Congratulations! ${name} course is checkout. Thank you` );
   return (
     <Container className="mb-5 w-50">
       <Row>
@@ -40,8 +41,10 @@ const CheackOut = () => {
                   </Card.Body>
                   <div className="d-flex justify-content-center pt-3 pb-4 ">
                     <Button
+                      onClick={notify}
                       variant="outline-primary"
-                      className="w-25 rounded-pill">
+                      className="w-25 rounded-pill"
+                    >
                       Check Out
                     </Button>
                   </div>
@@ -51,6 +54,7 @@ const CheackOut = () => {
           </div>
         </Col>
       </Row>
+      <ToastContainer position="top-center" autoClose={5000} theme="dark" />
     </Container>
   );
 };

@@ -2,21 +2,23 @@ import React, { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { BsGithub } from "react-icons/bs";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import * as EmailValidator from "email-validator";
 import { AuthContext } from "../../utility/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
 
-const Login = () => { 
-  const navigate=useNavigate();
+const Login = () => {
+  const navigate = useNavigate();
   const { signInGoogle, SignInForm } = useContext(AuthContext);
+  const location = useLocation();
   const googleProvider = new GoogleAuthProvider();
-
+  const from = location.state?.from?.pathname || "/";
   const [userInfo, setUserInfo] = useState({
     email: "",
   });
   const [errors, setErrors] = useState({
     email: "",
+    firebase:""
   });
   const handleEmailChange = (e) => {
     const email = e.target.value;
@@ -33,23 +35,20 @@ const Login = () => {
     event.preventDefault();
     const form = event.target;
     const password = form.password.value;
-    const email=userInfo.email;    
-      SignInForm(email, password)
-        .then((res) => {
-          const user = res.user;
-          console.log(user);
-          form.reset();
-          navigate('/')          
-        })
-        .catch((error) => console.log(error));
-    
+    const email = userInfo.email;
+    SignInForm(email, password)
+      .then((res) => {
+        const user = res.user;
+        console.log(user);
+        form.reset();
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {setErrors({...errors,firebase:error.message})});
   };
 
   const signinGoogle = () => {
     signInGoogle(googleProvider)
-      .then((res) => {
-        const user = res.user;
-        console.log(user);
+      .then(() => {        
       })
       .catch((error) => console.error(error));
   };
@@ -91,11 +90,12 @@ const Login = () => {
                   autoComplete="off"
                 />
               </Form.Group>
+              <span className="text-danger">{errors.firebase}</span>
               <div className="d-flex justify-content-center">
                 <Button
                   variant="outline-primary"
                   type="submit"
-                  className="w-75 mb-4 rounded-pill"
+                  className="w-50 mb-4 rounded-pill"
                 >
                   Sign-In
                 </Button>

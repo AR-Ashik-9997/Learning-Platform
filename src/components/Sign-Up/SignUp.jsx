@@ -2,18 +2,19 @@ import React, { useContext, useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { AuthContext } from "../../utility/AuthProvider";
 import * as EmailValidator from "email-validator";
+import { ToastContainer, toast } from "react-toastify";
 
 const SignUp = () => {
-  const { register, updateProfile } = useContext(AuthContext);
+  const { register, updateUserProfile } = useContext(AuthContext);
+  const notify = () => toast.success("Registration Successfull");
   const [userInfo, setUserInfo] = useState({
     email: "",
     password: "",
   });
   const [errors, setErrors] = useState({
-    name: "",
-    photUrl: "",
     email: "",
     password: "",
+    firebase: "",
   });
   const handleEmailChange = (e) => {
     const email = e.target.value;
@@ -35,7 +36,7 @@ const SignUp = () => {
         password: "Must have at least one uppercase character",
       });
     }
-    if (!/^(?=.{6})/.test(password)) {
+    if (!/^(?=.{8})/.test(password)) {
       return setErrors({
         ...errors,
         password: "Must have at least 8 character",
@@ -55,26 +56,34 @@ const SignUp = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
-    const username = form.username.value;    
+    const username = form.username.value;
     const photo = form.photoUrl.value;
     const email = userInfo.email;
     const password = userInfo.password;
-
+    console.log(photo);
     register(email, password)
-      .then((res) => {
+      .then(() => {
+        setErrors({ ...errors, firebase: "" });
+        form.reset();
         handleupdateProfile(username, photo);
+        notify();
       })
-      .catch((error) => console.error(error));
-     form.reset();
+      .catch((error) => {
+        setErrors({ ...errors, firebase: error.message });
+      });
   };
   const handleupdateProfile = (name, photoUrl) => {
     const profile = {
       displayName: name,
       photoURL: photoUrl,
     };
-    updateProfile(profile)
-      .then(() => {})
-      .catch((error) => console.error(error));
+    updateUserProfile(profile)
+      .then(() => {
+        setErrors({ ...errors, firebase: "" });
+      })
+      .catch((error) => {
+        setErrors({ ...errors, firebase: error.message });
+      });
   };
   return (
     <Container>
@@ -92,21 +101,23 @@ const SignUp = () => {
           <div className="bg-white w-75 rounded-4 mx-auto mt-5 mb-5">
             <h1 className="text-center mb-4 pt-5">Register</h1>
             <Form className="mx-auto w-75" onSubmit={handleSubmit}>
-              <Form.Group className="mb-4" controlId="formBasicEmail">
+              <Form.Group className="mb-4" controlId="formBasicname">
                 <Form.Control
                   name="username"
                   type="text"
                   placeholder="Full Name"
                   className="rounded-pill"
+                  required
                   autoComplete="off"
-                />                
+                />
               </Form.Group>
-              <Form.Group className="mb-4" controlId="formBasicEmail">
+              <Form.Group className="mb-4" controlId="formBasicphoto">
                 <Form.Control
                   name="photoUrl"
                   type="text"
                   placeholder="Photo-URL"
                   className="rounded-pill"
+                  required
                   autoComplete="off"
                 />
               </Form.Group>
@@ -117,6 +128,7 @@ const SignUp = () => {
                   placeholder="Enter email"
                   className="rounded-pill"
                   onChange={handleEmailChange}
+                  required
                   autoComplete="off"
                 />
                 <Form.Text className="text-danger">{errors.email}</Form.Text>
@@ -128,11 +140,13 @@ const SignUp = () => {
                   placeholder="Password"
                   className="rounded-pill"
                   onChange={handlePasswordChange}
+                  required
                   autoComplete="off"
                 />
                 <Form.Text className="text-danger">{errors.password}</Form.Text>
               </Form.Group>
-              <div className="d-flex justify-content-center">
+              <span className="text-danger">{errors.firebase}</span>
+              <div className="d-flex justify-content-center pb-5 pt-4">
                 <Button
                   variant="outline-primary"
                   type="submit"
@@ -145,6 +159,7 @@ const SignUp = () => {
           </div>
         </Col>
       </Row>
+      <ToastContainer position="top-center" autoClose={500} theme="dark" />
     </Container>
   );
 };

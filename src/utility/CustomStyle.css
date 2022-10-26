@@ -5,24 +5,22 @@
 .text-justify {
   text-align: justify;
 }
-.card-image {  
-  width: 100%; 
+.card-image {
+  width: 100%;
   height: 200px;
 }
-.details-card-image {   
-  width: 100%; 
+.details-card-image {
+  width: 100%;
   height: 100%;
 }
-
-.pdf {
-  width: 500;
-  height: 500;
-}
-.user-profile{
+.user-profile {
   width: 40px;
   height: 40px;
-  border-radius: 50%;  
+  border-radius: 50%;
 }
-.semi-bold{
+.semi-bold {
   font-weight: 600;
+}
+.home-container{
+  padding-bottom: 15rem;
 }

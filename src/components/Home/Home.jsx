@@ -7,16 +7,18 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Autoplay, EffectFade } from "swiper";
 import { useLoaderData } from "react-router-dom";
+
 const Home = () => {
   const data = useLoaderData();
+  
   const { image } = data;
   return (
-    <Container>
+    <Container className="home-container">
       <Row>
         <Col lg={6} md={6} sm={12}>
           <div className="d-flex align-items-center mt-5 pt-5">
             <div>
-            <h1 className="text-white mt-5 display-4">
+            <h1 className="text-white fw-lighter mt-5 display-4">
               Boost up your skills with a new way of learning.
             </h1>
             <p className="text-white mt-4 h5 text-justify">
