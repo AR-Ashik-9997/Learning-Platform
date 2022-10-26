@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { BsGithub } from "react-icons/bs";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../utility/AuthProvider";
+import { GoogleAuthProvider } from "firebase/auth";
 const Login = () => {
+  const { signInGoogle } = useContext(AuthContext);
+  const googleProvider = new GoogleAuthProvider();
+  const signinGoogle = () => {
+    signInGoogle(googleProvider)
+      .then((res) => {
+        const user = res.user;
+        console.log(user);
+      })
+      .catch((error) => console.error(error));
+  };
   return (
     <Container>
       <Row>
@@ -46,11 +58,19 @@ const Login = () => {
             </Form>
             <p className="text-center mb-4">
               Dont have an account?
-              <NavLink to="/create-account" className="text-decoration-none text-danger"> SignUp Now</NavLink>
+              <NavLink
+                to="/create-account"
+                className="text-decoration-none text-danger"
+              >
+                {" "}
+                SignUp Now
+              </NavLink>
             </p>
             <div className="d-flex justify-content-center mb-5">
-              <FcGoogle className="fs-1" />
-              <BsGithub className="fs-1 ms-4" />
+              <Button variant="outline-dark" onClick={signinGoogle}>
+                <FcGoogle className="fs-1" />
+              </Button>
+             <Button variant="outline-dark" className="ms-4"><BsGithub className="fs-1" /></Button>
             </div>
           </div>
         </Col>

@@ -5,7 +5,7 @@ import Header from "../components/Header/Header";
 import './CustomStyle.css';
 const Root = () => {
   return (
-    <div className="bg-design">
+    <div>
       <Header />            
       <Outlet />
       <Footer />

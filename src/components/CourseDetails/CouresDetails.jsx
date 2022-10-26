@@ -44,7 +44,7 @@ const CouresDetails = () => {
                     <h4>What you'll learn</h4>
                     <ul>
                       {learn.map((learning) => (
-                        <li key={v4()} className="text-justify">{learning}</li>
+                        <li key={v4()} className="text-justify p-2">{learning}</li>
                       ))}
                     </ul>
                   </Card.Body>
