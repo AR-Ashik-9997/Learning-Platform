@@ -3,8 +3,10 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { AuthContext } from "../../utility/AuthProvider";
 import * as EmailValidator from "email-validator";
 import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+  const navigate=useNavigate();
   const { register, updateUserProfile } = useContext(AuthContext);
   const notify = () => toast.success("Registration Successfull");
   const [userInfo, setUserInfo] = useState({
@@ -67,6 +69,7 @@ const SignUp = () => {
         form.reset();
         handleupdateProfile(username, photo);
         notify();
+        navigate('/')
       })
       .catch((error) => {
         setErrors({ ...errors, firebase: error.message });
@@ -126,19 +129,19 @@ const SignUp = () => {
                   name="email"
                   type="email"
                   placeholder="Enter email"
-                  className="rounded-pill"
+                  className="rounded-pill mb-2"
                   onChange={handleEmailChange}
                   required
                   autoComplete="off"
                 />
                 <Form.Text className="text-danger">{errors.email}</Form.Text>
               </Form.Group>
-              <Form.Group className="mb-4" controlId="formBasicPassword">
+              <Form.Group  controlId="formBasicPassword">
                 <Form.Control
                   name="password"
                   type="password"
                   placeholder="Password"
-                  className="rounded-pill"
+                  className="rounded-pill mb-2"
                   onChange={handlePasswordChange}
                   required
                   autoComplete="off"

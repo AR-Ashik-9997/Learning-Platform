@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-
 const CourseTitle = ({ courses }) => {
   const { id, name } = courses;
   return (

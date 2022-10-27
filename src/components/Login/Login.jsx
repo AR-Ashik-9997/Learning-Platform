@@ -41,6 +41,7 @@ const Login = () => {
       .then((res) => {
         const user = res.user;
         console.log(user);
+        setErrors({ ...errors, firebase:""});
         form.reset();
         navigate(from, { replace: true });
       })
@@ -52,16 +53,22 @@ const Login = () => {
   const signinGoogle = () => {
     signInGoogle(googleProvider)
       .then(() => {
+        setErrors({ ...errors, firebase:""});
         navigate(from, { replace: true });
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        setErrors({ ...errors, firebase: error.message });
+      });
   };
   const handlesignIngithub = () => {
     signInGithub(githubProvider)
       .then(() => {
+        setErrors({ ...errors, firebase:""});
         navigate(from, { replace: true });
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        setErrors({ ...errors, firebase: error.message });
+      });
   };
   return (
     <Container className="home-container">
@@ -84,7 +91,7 @@ const Login = () => {
                   name="email"
                   type="email"
                   placeholder="Enter email"
-                  className="rounded-pill"
+                  className="rounded-pill mb-2"
                   required
                   autoComplete="off"
                   onChange={handleEmailChange}
@@ -96,17 +103,17 @@ const Login = () => {
                   name="password"
                   type="password"
                   placeholder="Password"
-                  className="rounded-pill"
+                  className="rounded-pill mb-2"
                   required
-                  autoComplete="off"
+                  autoComplete="off"                 
                 />
-              </Form.Group>
-              <span className="text-danger">{errors.firebase}</span>
+                <Form.Text className="text-danger">{errors.firebase}</Form.Text>
+              </Form.Group>             
               <div className="d-flex justify-content-center">
                 <Button
                   variant="outline-primary"
                   type="submit"
-                  className="w-50 mb-4 rounded-pill"
+                  className="w-50  mb-4 rounded-pill"
                 >
                   Sign-In
                 </Button>

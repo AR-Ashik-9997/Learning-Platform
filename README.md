@@ -1,6 +1,6 @@
 # Skill Platform
 
-live site link:
+live site link: https://skill-platform-bfb62.web.app/
 
 # Features of my Website
 
