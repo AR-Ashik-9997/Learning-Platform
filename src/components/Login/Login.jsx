@@ -5,20 +5,21 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import * as EmailValidator from "email-validator";
 import { AuthContext } from "../../utility/AuthProvider";
-import { GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { signInGoogle, SignInForm } = useContext(AuthContext);
+  const { signInGoogle, SignInForm, signInGithub } = useContext(AuthContext);
   const location = useLocation();
   const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
   const from = location.state?.from?.pathname || "/";
   const [userInfo, setUserInfo] = useState({
     email: "",
   });
   const [errors, setErrors] = useState({
     email: "",
-    firebase:""
+    firebase: "",
   });
   const handleEmailChange = (e) => {
     const email = e.target.value;
@@ -43,12 +44,22 @@ const Login = () => {
         form.reset();
         navigate(from, { replace: true });
       })
-      .catch((error) => {setErrors({...errors,firebase:error.message})});
+      .catch((error) => {
+        setErrors({ ...errors, firebase: error.message });
+      });
   };
 
   const signinGoogle = () => {
     signInGoogle(googleProvider)
-      .then(() => {        
+      .then(() => {
+        navigate(from, { replace: true });
+      })
+      .catch((error) => console.error(error));
+  };
+  const handlesignIngithub = () => {
+    signInGithub(githubProvider)
+      .then(() => {
+        navigate(from, { replace: true });
       })
       .catch((error) => console.error(error));
   };
@@ -115,7 +126,11 @@ const Login = () => {
               <Button variant="outline-dark" onClick={signinGoogle}>
                 <FcGoogle className="fs-1" />
               </Button>
-              <Button variant="outline-dark" className="ms-4">
+              <Button
+                variant="outline-dark"
+                className="ms-4"
+                onClick={handlesignIngithub}
+              >
                 <BsGithub className="fs-1" />
               </Button>
             </div>

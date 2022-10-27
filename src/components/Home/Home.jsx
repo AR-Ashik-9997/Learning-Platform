@@ -10,7 +10,6 @@ import { useLoaderData } from "react-router-dom";
 
 const Home = () => {
   const data = useLoaderData();
-  
   const { image } = data;
   return (
     <Container className="home-container">
@@ -18,14 +17,14 @@ const Home = () => {
         <Col lg={6} md={6} sm={12}>
           <div className="d-flex align-items-center mt-5 pt-5">
             <div>
-            <h1 className="text-white fw-lighter mt-5 display-4">
-              Boost up your skills with a new way of learning.
-            </h1>
-            <p className="text-white mt-4 h5 text-justify">
-              Education is not just about going to school and getting a degree.
-              It's about widening your knowledge and absorbing the truth about
-              life. Knowledge is power.
-            </p>
+              <h1 className="text-white fw-lighter mt-5 display-4">
+                Boost up your skills with a new way of learning.
+              </h1>
+              <p className="text-white mt-4 h5 text-justify">
+                Education is not just about going to school and getting a
+                degree.It's about widening your knowledge and absorbing the
+                truth about life. Knowledge is power.
+              </p>
             </div>
           </div>
         </Col>

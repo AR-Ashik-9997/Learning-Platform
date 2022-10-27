@@ -3,7 +3,6 @@ import { Button, Container, Dropdown, Nav, Navbar } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../utility/AuthProvider";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
-import { assert } from "@firebase/util";
 const Header = () => {
   const { user, Logout } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -20,7 +19,7 @@ const Header = () => {
   }
   const handleSignOut = () => {
     Logout().then(() => {});
-    navigate("/sign-in").catch((error) => console.error(error));
+    navigate("/").catch((error) => console.error(error));
   };
   return (
     <div>
