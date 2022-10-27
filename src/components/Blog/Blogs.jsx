@@ -3,8 +3,9 @@ import { Accordion, Col, Container, Row } from "react-bootstrap";
 
 const Blogs = () => {
   return (
-    <Container className="mt-5 pt-5">
+    <Container className="mt-5 pt-5 home-container">
       <Row>
+        <h1 className="text-center text-white pb-4">Answered by 4 Questions</h1>
         <Col lg={12} md={12} sm={12}>
           <Accordion defaultActiveKey={["0", "1", "2", "3"]} alwaysOpen>
             <Accordion.Item eventKey="0">

@@ -12,7 +12,7 @@ const Header = () => {
   };
   if (isDarkMode === true) {
     document.body.style.backgroundImage =
-      "linear-gradient(to right, #231f72, #1e5395)";
+      "linear-gradient(to right, #231f72, #1e5395)";      
   } else {
     document.body.style.backgroundImage =
       "linear-gradient(to right, #080D27, #1B2841)";

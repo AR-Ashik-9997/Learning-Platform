@@ -7,7 +7,7 @@ const Courses = () => {
   const courseData = useLoaderData();
   const { courses } = courseData;
   return (
-    <Container>
+    <Container className="home-container pt-5">
       <Row>
         <Col lg={4} md={4} sm={12}>
           <div className="mt-5">

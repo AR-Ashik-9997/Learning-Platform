@@ -10,7 +10,7 @@ const CouresDetails = () => {
   const details = useLoaderData();
   const {id, name, img, ratings, video, access, certificate, learn } = details;
   return (
-    <Container className="mb-5">
+    <Container className="home-container">
       <Row>
         <Col lg={12} md={12} sm={12}>
           <div className="d-flex justify-content-center mt-5 pt-5 mb-5 align-items-end">

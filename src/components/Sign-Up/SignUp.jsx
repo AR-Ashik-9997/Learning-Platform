@@ -86,7 +86,7 @@ const SignUp = () => {
       });
   };
   return (
-    <Container>
+    <Container className="home-container">
       <Row>
         <Col lg={6} md={6} sm={12}>
           <div className="mt-5 pt-5">
