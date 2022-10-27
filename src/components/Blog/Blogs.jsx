@@ -84,7 +84,7 @@ const Blogs = () => {
                   no time or resources on waiting for I/O requests to return.
                 </p>
                 <p className="text-justify fs-5">It is a used as backend service where javascript works on the server-side of the application. This way javascript is used on both frontend and backend. Node. js runs on chrome v8 engine which converts javascript code into machine code, it is highly scalable, lightweight, fast, and data-intensive. Working of Node.</p>
-                <img src="https://csharpcorner-mindcrackerinc.netdna-ssl.com/article/node-js-event-loop/Images/1.png" alt="" className="mx-auto d-block" />
+                <img src="https://csharpcorner-mindcrackerinc.netdna-ssl.com/article/node-js-event-loop/Images/1.png" alt="" className="mx-auto d-block img-fluid my-5" />
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>

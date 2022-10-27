@@ -24,3 +24,10 @@
 .home-container{
   padding-bottom: 15rem;
 }
+.bg-error{
+  height: 90vh; 
+}
+.error-img{
+  margin-top: 10rem;
+}
+

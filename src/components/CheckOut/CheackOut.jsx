@@ -7,7 +7,7 @@ const CheackOut = () => {
   const { name, img, ratings, video, access, certificate } = checkoutData;
   const notify = () => toast.success(`Congratulations! ${name} course is checkout. Thank you` );
   return (
-    <Container className="mb-5 w-50">
+    <Container className="home-container w-50">
       <Row>
         <Col lg={12} md={12} sm={12}>
           <div className="d-flex justify-content-center mt-5 pt-5 mb-5 align-items-end">

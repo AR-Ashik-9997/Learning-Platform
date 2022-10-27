@@ -12,7 +12,7 @@ const Header = () => {
   };
   if (isDarkMode === true) {
     document.body.style.backgroundImage =
-      "linear-gradient(to right, #231f72, #1e5395)";      
+      "linear-gradient(to right, #231f72, #1e5395)";
   } else {
     document.body.style.backgroundImage =
       "linear-gradient(to right, #080D27, #1B2841)";
@@ -44,7 +44,7 @@ const Header = () => {
               <Nav.Link
                 className="fs-5 text-white"
                 as={Link}
-                to="/following-question-answer"
+                to="/frequently-question-answer"
               >
                 FAQ
               </Nav.Link>
@@ -72,13 +72,18 @@ const Header = () => {
                 <></>
               )}
               {user?.uid ? (
-                <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center d-grid gap-3 d-block">
                   <Button
                     onClick={handleSignOut}
                     variant="outline-primary btn-md text-white"
                   >
                     Sign-Out
                   </Button>
+                  <DarkModeSwitch
+                    checked={isDarkMode}
+                    onChange={toggleDarkMode}
+                    size={30}
+                  />
                 </div>
               ) : (
                 <div className="d-flex align-items-center d-grid gap-3 d-block">

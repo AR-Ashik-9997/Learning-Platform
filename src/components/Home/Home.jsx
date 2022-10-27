@@ -58,7 +58,7 @@ const Home = () => {
           >
             {image.map((data) => (
               <SwiperSlide key={data.id}>
-                <img src={data.image} alt="" className="d-block home-image" />
+                <img src={data.image} alt="" className="d-block home-image rounded" />
               </SwiperSlide>
             ))}
           </Swiper>

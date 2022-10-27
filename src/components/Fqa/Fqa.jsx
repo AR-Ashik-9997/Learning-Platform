@@ -111,9 +111,9 @@ const Fqa = () => {
         </Col>
         <Col lg={7} md={7} sm={12}>
           <img
-            src="https://img.freepik.com/free-vector/flat-people-asking-questions-illustration_23-2148910626.jpg?w=826&t=st=1666864376~exp=1666864976~hmac=e42b91fd889c0469a945b520d16b681c587a667cce75561edef70464be064368"
+            src="https://cdni.iconscout.com/illustration/premium/thumb/faq-frequently-asked-help-5850880-4863248.png"
             alt=""
-            className="img-fluid d-block mt-5"
+            className="d-block mt-5 img-fluid mx-auto"
           />
         </Col>
       </Row>

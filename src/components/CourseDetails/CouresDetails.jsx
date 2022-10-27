@@ -36,15 +36,15 @@ const CouresDetails = () => {
                       </Pdf>
                     </Card.Title>
                     <ul className="fs-5 mt-3">
-                      <li>Ratings: {ratings}</li>
-                      <li>Videos: {video}</li>
-                      <li>Access: {access}</li>
-                      <li>Certificate{certificate}</li>
+                      <li><span className="semi-bold">Ratings:</span> {ratings}</li>
+                      <li><span className="semi-bold">Videos:</span> {video}</li>
+                      <li><span className="semi-bold">Access:</span> {access}</li>
+                      <li><span className="semi-bold">Certificate:</span> {certificate}</li>
                     </ul>
                     <h4>What you'll learn</h4>
                     <ul>
                       {learn.map((learning) => (
-                        <li key={v4()} className="text-justify p-2">{learning}</li>
+                        <li key={v4()} className="text-justify w-75">{learning}</li>
                       ))}
                     </ul>
                   </Card.Body>
