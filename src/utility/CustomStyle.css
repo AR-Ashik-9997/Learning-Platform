@@ -31,3 +31,16 @@
   margin-top: 10rem;
 }
 
+.home-bottom{
+  padding-bottom: 8rem;
+}
+
+.btn-border{
+  border-color: yellow !important;
+}
+.card-bg{
+  background-image: linear-gradient(to right, #080D27, #1B2841);
+}
+.card-border{
+  border: none !important;
+}

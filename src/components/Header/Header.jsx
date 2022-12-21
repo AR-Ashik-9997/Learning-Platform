@@ -7,7 +7,7 @@ const Header = () => {
   const { user, Logout } = useContext(AuthContext);
   const navigate = useNavigate();
   const [isDarkMode, setDarkMode] = React.useState(true);
-  const toggleDarkMode = (checked: boolean) => {
+  const toggleDarkMode = (checked: Boolean) => {
     setDarkMode(checked);
   };
   if (isDarkMode === true) {
@@ -75,7 +75,7 @@ const Header = () => {
                 <div className="d-flex align-items-center d-grid gap-3 d-block">
                   <Button
                     onClick={handleSignOut}
-                    variant="outline-primary btn-md text-white"
+                    variant="btn-md text-white" className="btn-border"
                   >
                     Sign-Out
                   </Button>
@@ -88,7 +88,7 @@ const Header = () => {
               ) : (
                 <div className="d-flex align-items-center d-grid gap-3 d-block">
                   <Link to="/sign-in">
-                    <Button variant="outline-primary btn-md text-white">
+                    <Button variant="btn-md text-white" className="btn-border">
                       Sign-In
                     </Button>
                   </Link>
